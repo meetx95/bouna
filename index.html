@@ -40,8 +40,8 @@
           <i class="fas fa-heart" style="color: #f25a8a; margin-left: 6px"></i>
         </h2>
         <p>
-          Happy birthday, Boune! Now give me my money, you borrowed it 100
-          years ago, so return it now! 😂<br />
+          Happy birthday, Boune! Now give me my money, you borrowed it 100 years
+          ago, so return it now! 😂<br />
           <b>
             Now give me Rakhi! I won't give you money anymore. Just get the
             Rakhi and cake too, hehe 🐷
@@ -69,13 +69,13 @@
         <div class="big">😺</div>
         <h2>🔓 Secret Message</h2>
         <p>
-          You're still tiny sorry, small sorry, bouna sorry, little! 😂
-          How can anyone be this small?
+          You're still tiny sorry, small sorry, bouna sorry, little! 😂 How can
+          anyone be this small?
         </p>
         <p>
           <b>Stay happy, stay awesome, and remember:</b>
-          I'm the GOAT the Greatest Of All Time the honored one, Gojo!
-          Sorry, it's me, <b>MEET</b>.
+          I'm the GOAT the Greatest Of All Time the honored one, Gojo! Sorry,
+          it's me, <b>MEET</b>.
         </p>
         <div class="confetti">🎉 🥳 🎂 🎁 ✨ 🎈</div>
       </div>
@@ -207,7 +207,6 @@
           return "😂 More cake needed to think straight!";
         }
 
-        // button secret
         $("#wishBtn").on("click", function () {
           const $secret = $("#secret");
           const isOpen = $secret.is(":visible");
@@ -223,7 +222,6 @@
           }
         });
 
-        // answer clicks
         $(".answer").on("click", function () {
           const $btn = $(this);
           const $q = $btn.closest(".question");
@@ -254,7 +252,6 @@
           }
         });
 
-        // retry
         $retry.on("click", function () {
           score = 0;
           answered = 0;
@@ -269,7 +266,6 @@
           toast("🔄 Quiz reset! Good luck!");
         });
 
-        // pig hover effect
         $(".pig")
           .on("mouseenter", function () {
             $(this).find(".crown").css("transform", "rotate(18deg) scale(1.1)");
@@ -278,11 +274,9 @@
             $(this).find(".crown").css("transform", "rotate(10deg) scale(1)");
           });
 
-        // card entrance
         $(".card").hide().fadeIn(900);
         updateUI();
 
-        // console warn if wrong data-correct count
         $questions.each(function (i) {
           const c = $(this).find('[data-correct="true"]').length;
           if (c !== 1)
