@@ -1,7 +1,15 @@
+/* Mobile-first CSS for birthday card with scrolling support */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 body {
@@ -9,15 +17,16 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family:
     "Segoe UI",
     system-ui,
     -apple-system,
     sans-serif;
-  padding: 16px;
+  padding: 16px 16px 40px;
   margin: 0;
   position: relative;
-  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* --- Floating decorations --- */
@@ -103,6 +112,26 @@ body {
   border: 1px solid rgba(255, 215, 225, 0.5);
   transition: all 0.2s;
   margin: 10px auto;
+  max-height: 90vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for card */
+.card::-webkit-scrollbar {
+  width: 4px;
+}
+.card::-webkit-scrollbar-track {
+  background: #fce4ec;
+  border-radius: 10px;
+}
+.card::-webkit-scrollbar-thumb {
+  background: #f06292;
+  border-radius: 10px;
+}
+.card {
+  scrollbar-width: thin;
+  scrollbar-color: #f06292 #fce4ec;
 }
 
 /* --- Badge --- */
@@ -515,6 +544,7 @@ h1 i {
   .card {
     padding: 22px 14px 24px;
     border-radius: 30px;
+    max-height: 92vh;
   }
   h1 {
     font-size: 1.8rem;
@@ -546,6 +576,7 @@ h1 i {
 @media (max-width: 360px) {
   .card {
     padding: 16px 10px 18px;
+    max-height: 94vh;
   }
   h1 {
     font-size: 1.5rem;
@@ -562,6 +593,63 @@ h1 i {
     font-size: 1.4rem;
   }
   .message p {
+    font-size: 0.85rem;
+  }
+}
+
+/* For very tall screens, ensure card doesn't overflow */
+@media (min-height: 800px) {
+  .card {
+    max-height: 85vh;
+  }
+}
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  body {
+    padding: 10px 16px 20px;
+    align-items: flex-start;
+  }
+  .card {
+    max-height: 85vh;
+    padding: 18px 18px 20px;
+  }
+  .pig img {
+    width: 80px;
+    height: 80px;
+  }
+  .crown {
+    font-size: 1.6rem;
+    top: -8px;
+  }
+  .float-icon {
+    font-size: 1.4rem;
+  }
+  h1 {
+    font-size: 1.4rem;
+  }
+  .message {
+    padding: 14px 14px;
+    margin: 12px 0;
+  }
+  .message p {
+    font-size: 0.8rem;
+    margin: 4px 0;
+  }
+  .quiz {
+    padding: 14px 12px;
+    margin: 14px 0 4px;
+  }
+  .question {
+    padding: 10px 12px;
+    margin: 8px 0;
+  }
+  .answer {
+    padding: 5px 12px;
+    font-size: 0.75rem;
+  }
+  #wishBtn {
+    padding: 10px 16px;
     font-size: 0.85rem;
   }
 }
