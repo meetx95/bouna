@@ -1,288 +1,903 @@
+<!doctype html>
 <html lang="en">
-  <head>
-    <title>✨ HBD Boune Suar ✨</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-  </head>
-  <body>
-    <div class="float-icon balloon b1">🎈</div>
-    <div class="float-icon balloon b2">🐷</div>
-    <div class="float-icon balloon b3">🎈</div>
-    <div class="float-icon heart-float h1">💗</div>
-    <div class="float-icon heart-float h2">🐷</div>
-    <div class="float-icon heart-float h3">💕</div>
 
-    <main class="card">
-      <div class="badge">
-        <i class="fas fa-birthday-cake" style="margin-right: 6px"></i>HAPPY
-        BIRTHDAY PRACHI 🎀
-      </div>
-      <p class="small-head">✧ A little gift for my pig ✧</p>
-      <h1>Shorthy <i class="fas fa-heart"></i></h1>
-      <div class="line"></div>
-      <p class="name">🥳 Boune Suar 🥳</p>
-      <div class="pig">
-        <div class="circle-glow"></div>
-        <img src="pig.jpg" alt="cute piggy" style="background: #fce4ed" />
-        <div class="crown">👑</div>
-        <div class="sparkle s1">✨</div>
-        <div class="sparkle s2">✨</div>
-      </div>
-      <p class="pig-text">🐷 Is that you? 🐷</p>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#020907" />
+    <title>For Sana</title>
 
-      <div class="message">
-        <h2>
-          <i class="fas fa-birthday-cake" style="margin-right: 10px"></i> Happy
-          Birthday, Prachi!
-          <i class="fas fa-heart" style="color: #f25a8a; margin-left: 6px"></i>
-        </h2>
-        <p>
-          Happy birthday, Boune! Now give me my money, you borrowed it 100 years
-          ago, so return it now! 😂<br />
-          <b>
-            Now give me Rakhi! I won't give you money anymore. Just get the
-            Rakhi and cake too, hehe 🐷
-          </b>
-        </p>
-        <p>
-          Keep being your beautiful, crazy self and annoy your brother just
-          enough to keep things real. 😭💗
-        </p>
-        <p>
-          May this year bring you <b>joy, success, adventures</b>, unforgettable
-          memories, and, and, and a Bonvita box because you're tiny as hell. ✨
-        </p>
-        <p class="special">
-          No matter what, you'll always be my little pig sorry, sister. 🫶
-          <b>Bouna is still bouna, after all! 😂</b>
-        </p>
-      </div>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:wght@400;500;600&family=Allura&display=swap');
 
-      <button id="wishBtn">
-        <i class="fas fa-gift"></i> Open Secret Message
-      </button>
+        :root {
+            --bg: #020907;
+            --green: #82c995;
+            --soft: #b8cdbd;
+            --white: #f2f8f1;
+            --card: rgba(12, 38, 24, .72);
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
 
-      <div id="secret" class="secret">
-        <div class="big">😺</div>
-        <h2>🔓 Secret Message</h2>
-        <p>
-          You're still tiny sorry, small sorry, bouna sorry, little! 😂 How can
-          anyone be this small?
-        </p>
-        <p>
-          <b>Stay happy, stay awesome, and remember:</b>
-          I'm the GOAT the Greatest Of All Time the honored one, Gojo! Sorry,
-          it's me, <b>MEET</b>.
-        </p>
-        <div class="confetti">🎉 🥳 🎂 🎁 ✨ 🎈</div>
-      </div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-      <section class="quiz">
-        <p class="label-quiz">
-          <i class="fas fa-question-circle"></i> SISTER QUIZ
-        </p>
-        <h2>How well do you know yourself?</h2>
-        <div class="progress">
-          <div class="progress-bar" id="progressBar"></div>
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: "DM Sans", sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            min-height: 100dvh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* ---------- Background ---------- */
+        .night {
+            position: fixed;
+            inset: 0;
+            z-index: -100;
+            background:
+                radial-gradient(circle at 50% 10%, rgba(90, 170, 105, .22), transparent 28%),
+                radial-gradient(circle at 0 70%, rgba(25, 95, 58, .2), transparent 35%),
+                linear-gradient(180deg, #010504, #03110a 48%, #06170e);
+        }
+
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -90;
+        }
+
+        .stars span {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 7px #fff;
+            animation: sparkle 2s infinite alternate;
+        }
+
+        .stars span:nth-child(1) { top: 7%; left: 8%; animation-delay: .2s }
+        .stars span:nth-child(2) { top: 13%; left: 22%; animation-delay: 1s }
+        .stars span:nth-child(3) { top: 10%; left: 42%; animation-delay: .5s }
+        .stars span:nth-child(4) { top: 19%; left: 60%; animation-delay: 1.3s }
+        .stars span:nth-child(5) { top: 8%; left: 84%; animation-delay: .7s }
+        .stars span:nth-child(6) { top: 31%; left: 6%; animation-delay: 1.5s }
+        .stars span:nth-child(7) { top: 28%; left: 34%; animation-delay: .4s }
+        .stars span:nth-child(8) { top: 35%; left: 74%; animation-delay: 1.2s }
+        .stars span:nth-child(9) { top: 43%; left: 92%; animation-delay: .3s }
+        .stars span:nth-child(10) { top: 50%; left: 17%; animation-delay: 1.1s }
+        .stars span:nth-child(11) { top: 57%; left: 48%; animation-delay: .8s }
+        .stars span:nth-child(12) { top: 61%; left: 79%; animation-delay: 1.6s }
+        .stars span:nth-child(13) { top: 73%; left: 10%; animation-delay: .5s }
+        .stars span:nth-child(14) { top: 77%; left: 58%; animation-delay: 1.4s }
+        .stars span:nth-child(15) { top: 85%; left: 88%; animation-delay: .9s }
+        .stars span:nth-child(16) { top: 90%; left: 35%; animation-delay: .3s }
+
+        @keyframes sparkle {
+            from { opacity: .15; transform: scale(.6) }
+            to { opacity: 1; transform: scale(1.5) }
+        }
+
+        .glow {
+            position: fixed;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: rgba(85, 180, 105, .08);
+            filter: blur(50px);
+            animation: glowMove 8s infinite alternate;
+            pointer-events: none;
+            z-index: -80;
+        }
+
+        .glow.one { left: -90px; top: 35% }
+        .glow.two { right: -90px; top: 65%; animation-delay: 2s }
+
+        @keyframes glowMove {
+            to { transform: translateY(60px) }
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            min-height: 100vh;
+            min-height: 100svh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: calc(var(--safe-top) + 200px) 20px calc(var(--safe-bottom) + 150px);
+            overflow: hidden;
+        }
+
+        .moon {
+            position: absolute;
+            top: calc(var(--safe-top) + 44px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 112px;
+            height: 112px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #fff, #f1f4d5 55%, #d6ddb9);
+            box-shadow: 0 0 25px rgba(245, 255, 221, .65), 0 0 70px rgba(200, 255, 210, .28);
+            animation: moonFloat 6s ease-in-out infinite;
+        }
+
+        .moon:before,
+        .moon:after {
+            content: "";
+            position: absolute;
+            background: rgba(130, 145, 110, .18);
+            border-radius: 50%;
+        }
+
+        .moon:before { width: 20%; height: 20%; top: 24%; left: 20% }
+        .moon:after { width: 28%; height: 28%; right: 16%; bottom: 20% }
+
+        @keyframes moonFloat {
+            50% { transform: translateX(-50%) translateY(-7px) }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .eyebrow {
+            color: #94cba1;
+            font-family: "Cinzel", serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: "Cinzel", serif;
+            font-size: clamp(34px, 10.5vw, 68px);
+            line-height: 1.05;
+            font-weight: 600;
+            letter-spacing: -1px;
+            text-shadow: 0 0 25px rgba(120, 210, 140, .25);
+        }
+
+        .hero h1 span {
+            display: block;
+            margin-top: 10px;
+            color: #80ca91;
+            font-family: "Allura", cursive;
+            font-size: 1.3em;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            max-width: 340px;
+            margin: 22px auto 0;
+            color: var(--soft);
+            font-size: 15px;
+            line-height: 1.75;
+            padding: 0 4px;
+        }
+
+        .hero-description small {
+            display: block;
+            margin-top: 10px;
+            font-size: 13px;
+            font-style: italic;
+            color: #8fb398;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            margin-top: 28px;
+            padding: 13px 26px;
+            color: #eaf8ed;
+            text-decoration: none;
+            border: 1px solid rgba(130, 205, 145, .4);
+            border-radius: 100px;
+            background: rgba(60, 120, 75, .2);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            transition: .3s;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .hero-button:hover,
+        .hero-button:active {
+            background: rgba(80, 150, 95, .35);
+            transform: translateY(-3px);
+        }
+
+        .forest {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 135px;
+            pointer-events: none;
+        }
+
+        .mountain {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 135px solid #03130b;
+        }
+
+        .mountain.one { left: -90px }
+        .mountain.two { left: 25%; transform: scale(1.2) }
+        .mountain.three { right: -90px; transform: scale(1.1) }
+
+        .tree-line {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 65px;
+            background: linear-gradient(135deg, transparent 25%, #020c07 26%, #020c07 30%, transparent 31%);
+            background-size: 38px 65px;
+        }
+
+        .fireflies {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .firefly {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #b6ff9f;
+            box-shadow: 0 0 10px #8cff7d;
+            animation: fireflyMove 6s infinite alternate ease-in-out;
+        }
+
+        .firefly:nth-child(1) { left: 12%; top: 62% }
+        .firefly:nth-child(2) { left: 25%; top: 70%; animation-delay: 1s }
+        .firefly:nth-child(3) { left: 68%; top: 64%; animation-delay: 2s }
+        .firefly:nth-child(4) { left: 83%; top: 73%; animation-delay: 3s }
+        .firefly:nth-child(5) { left: 50%; top: 78%; animation-delay: 1.5s }
+
+        @keyframes fireflyMove {
+            0% { opacity: .1; transform: translate(0, 0) }
+            50% { opacity: 1 }
+            100% { opacity: .1; transform: translate(25px, -30px) }
+        }
+
+        /* ---------- Sections ---------- */
+        section.content-section {
+            position: relative;
+            padding: 64px 16px;
+        }
+
+        .section-label {
+            text-align: center;
+            color: #76b985;
+            font-family: "Cinzel", serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: "Cinzel", serif;
+            font-size: clamp(25px, 7.5vw, 34px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -.4px;
+            margin-bottom: 28px;
+        }
+
+        /* ---------- Letter ---------- */
+        .glass {
+            width: 100%;
+            max-width: 480px;
+            margin: auto;
+            padding: 28px 20px;
+            border-radius: 22px;
+            border: 1px solid rgba(170, 220, 180, .15);
+            background: linear-gradient(145deg, rgba(42, 83, 55, .3), rgba(5, 22, 13, .7));
+            box-shadow: 0 18px 55px rgba(0, 0, 0, .3);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+        }
+
+        .letter-icon {
+            font-size: 38px;
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .letter {
+            color: #cad9ce;
+            font-size: 16px;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .letter p + p {
+            margin-top: 1.1em;
+        }
+
+        .letter .salutation {
+            font-family: "Allura", cursive;
+            font-size: 30px;
+            line-height: 1.2;
+            color: #a9d7b2;
+        }
+
+        .signature {
+            margin-top: 24px;
+            color: #8dcc98;
+            text-align: right;
+            font-family: "Allura", cursive;
+            font-size: 28px;
+            line-height: 1.3;
+        }
+
+        /* ---------- Cake ---------- */
+        .cake-area {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-top: 30px;
+        }
+
+        .cake {
+            position: relative;
+            width: 150px;
+            height: 76px;
+            margin: auto;
+            background: linear-gradient(#9b684a, #70462f);
+            border-radius: 9px 9px 14px 14px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, .3);
+        }
+
+        .cake:before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 100%;
+            height: 24px;
+            border-radius: 50%;
+            background: #f4e7d1;
+        }
+
+        .candle {
+            position: absolute;
+            width: 6px;
+            height: 27px;
+            background: #80bc8c;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .flame {
+            position: absolute;
+            width: 13px;
+            height: 18px;
+            background: #ffd76a;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            top: -15px;
+            left: -4px;
+            box-shadow: 0 0 15px #ffd76a;
+            animation: flame 1s infinite alternate;
+        }
+
+        @keyframes flame {
+            to { transform: rotate(-45deg) scale(1.1) }
+        }
+
+        .cake-caption {
+            max-width: 320px;
+            margin: 30px auto 0;
+            color: #aebfb2;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* ---------- Wishes ---------- */
+        .wishes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            max-width: 480px;
+            margin: auto;
+        }
+
+        .wish {
+            padding: 20px 18px;
+            border-radius: 17px;
+            background: rgba(30, 67, 43, .28);
+            border: 1px solid rgba(130, 190, 140, .1);
+            transition: .3s;
+        }
+
+        .wish:hover { transform: translateY(-3px); background: rgba(40, 85, 52, .35) }
+        .wish-icon { font-size: 24px; margin-bottom: 8px }
+
+        .wish h3 {
+            font-family: "Cinzel", serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: #a9d7b2;
+            margin-bottom: 6px;
+        }
+
+        .wish p {
+            color: #aebfb2;
+            line-height: 1.65;
+            font-size: 14.5px;
+        }
+
+        /* ---------- Timeline ---------- */
+        .memory-timeline {
+            max-width: 560px;
+            margin: auto;
+            position: relative;
+        }
+
+        .memory-timeline:before {
+            content: "";
+            position: absolute;
+            left: 21px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(#76b985, rgba(118, 185, 133, .04));
+        }
+
+        .memory-card {
+            position: relative;
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .memory-dot {
+            position: relative;
+            z-index: 2;
+            flex: 0 0 43px;
+            height: 43px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #092116;
+            border: 1px solid rgba(130, 205, 145, .35);
+            color: #91c99d;
+            font-family: "Cinzel", serif;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .memory-content {
+            flex: 1;
+            min-width: 0;
+            padding: 16px;
+            border-radius: 17px;
+            border: 1px solid rgba(150, 210, 160, .13);
+            background: linear-gradient(145deg, rgba(30, 67, 43, .38), rgba(5, 22, 13, .72));
+        }
+
+        .memory-number {
+            display: block;
+            color: #82bf8e;
+            font-family: "Cinzel", serif;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .memory-content h3 {
+            margin-top: 5px;
+            font-family: "Cinzel", serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .memory-content p {
+            margin-top: 6px;
+            color: #a8b9ad;
+            font-size: 14.5px;
+            line-height: 1.65;
+        }
+
+        /* ---------- Final wish ---------- */
+        .wish-area {
+            text-align: center;
+            max-width: 480px;
+            margin: auto;
+        }
+
+        .wish-area p {
+            color: #aebfb2;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 26px;
+        }
+
+        .wish-button {
+            border: none;
+            min-height: 52px;
+            width: 100%;
+            max-width: 280px;
+            padding: 14px 28px;
+            border-radius: 100px;
+            background: linear-gradient(135deg, #6db27b, #39734b);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(70, 150, 90, .25);
+            transition: .3s;
+            touch-action: manipulation;
+        }
+
+        .wish-button:hover,
+        .wish-button:active {
+            transform: translateY(-3px);
+        }
+
+        #wishMessage {
+            display: none;
+            margin-top: 28px;
+            color: #cde8d2;
+            font-size: 16px;
+            line-height: 1.8;
+            animation: reveal .8s ease;
+        }
+
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(12px) }
+            to { opacity: 1; transform: translateY(0) }
+        }
+
+        /* ---------- Footer ---------- */
+        footer {
+            text-align: center;
+            padding: 45px 15px calc(45px + var(--safe-bottom));
+            color: #6f8f78;
+            font-size: 13px;
+            letter-spacing: .5px;
+        }
+
+        footer span {
+            display: block;
+            margin-top: 8px;
+            color: #8fb598;
+        }
+
+        .confetti {
+            position: fixed;
+            top: -20px;
+            z-index: 999;
+            pointer-events: none;
+            animation: confettiFall 3.5s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to { transform: translateY(110vh) rotate(720deg); opacity: 0 }
+        }
+
+        /* ---------- Very small phones ---------- */
+        @media (max-width: 360px) {
+            .hero { padding-left: 14px; padding-right: 14px }
+            .eyebrow { letter-spacing: 2px }
+            .glass { padding: 24px 16px }
+            .memory-dot { flex-basis: 38px; height: 38px; font-size: 11px }
+            .memory-timeline:before { left: 19px }
+        }
+
+        /* ---------- Short landscape phones ---------- */
+        @media (max-height: 520px) and (orientation: landscape) {
+            .hero { padding-top: calc(var(--safe-top) + 180px); padding-bottom: 150px }
+            .moon { width: 90px; height: 90px; top: 24px }
+        }
+
+        /* ---------- Tablets and up ---------- */
+        @media (min-width: 600px) {
+            section.content-section { padding: 90px 25px }
+            .moon { width: 150px; height: 150px }
+            .hero { padding-top: 260px }
+            .hero h1 { font-size: 65px }
+            .hero-description { max-width: 420px; font-size: 16px }
+            .wishes { grid-template-columns: 1fr 1fr; gap: 15px }
+            .wish-button { width: auto }
+        }
+
+        /* ---------- Reduced motion ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="night"></div>
+
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+
+    <div class="stars">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <section class="hero">
+        <div class="moon"></div>
+
+        <div class="fireflies">
+            <div class="firefly"></div>
+            <div class="firefly"></div>
+            <div class="firefly"></div>
+            <div class="firefly"></div>
+            <div class="firefly"></div>
         </div>
 
-        <div class="question" data-qid="1">
-          <p>1️⃣ Most important birthday essential?</p>
-          <button class="answer" data-correct="false">Homework 📚</button><br />
-          <button class="answer" data-correct="true">Cake 🎂</button><br />
-          <button class="answer" data-correct="false">Cleaning 🧹</button><br />
-          <div class="result"></div>
-        </div>
-        <div class="question" data-qid="2">
-          <p>2️⃣ Little sister's secret superpower?</p>
-          <button class="answer" data-correct="false">Flying 🦸</button><br />
-          <button class="answer" data-correct="true">
-            Annoying big brother 😂</button
-          ><br />
-          <button class="answer" data-correct="false">Early homework 😭</button
-          ><br />
-          <div class="result"></div>
-        </div>
-        <div class="question" data-qid="3">
-          <p>3️⃣ What should Shorthy do after seeing this?</p>
-          <button class="answer" data-correct="true">
-            Smile & enjoy her day 🥳</button
-          ><br />
-          <button class="answer" data-correct="false">
-            Give brother homework</button
-          ><br />
-          <button class="answer" data-correct="false">Clean the room 🧹</button
-          ><br />
-          <div class="result"></div>
-        </div>
-        <div class="question" data-qid="4">
-          <p>4️⃣ Shortest thing I've ever seen in my life?</p>
-          <button class="answer" data-correct="false">Kid 👺</button><br />
-          <button class="answer" data-correct="false">Kid 👺</button><br />
-          <button class="answer" data-correct="true">You 😺</button><br />
-          <div class="result"></div>
-        </div>
-        <div class="question" data-qid="5">
-          <p>5️⃣ Who's the best sibling in the world?</p>
-          <button class="answer" data-correct="false">Neighbor's cat 🐱</button
-          ><br />
-          <button class="answer" data-correct="true">My brother 😎</button
-          ><br />
-          <button class="answer" data-correct="false">Still deciding 🤔</button
-          ><br />
-          <div class="result"></div>
+        <div class="hero-content">
+            <div class="eyebrow">Tonight belongs to you</div>
+            <h1>
+                Happy Birthday
+                <span>Sana 🌿</span>
+            </h1>
+            <p class="hero-description">
+                The moon is out, the stars are showing off, and this little corner of
+                the internet is yours for the night.
+                <small>(now gimme some money)</small>
+            </p>
+
+            <a href="#letter" class="hero-button">Enter your little forest ↓</a>
         </div>
 
-        <div class="score">
-          <span
-            ><i class="fas fa-trophy" style="color: #e683b0"></i> Quiz
-            score</span
-          >
-          <strong id="score">0 / 5</strong>
+        <div class="forest">
+            <div class="mountain one"></div>
+            <div class="mountain two"></div>
+            <div class="mountain three"></div>
+            <div class="tree-line"></div>
         </div>
-        <button id="retryBtn" class="retry">
-          <i class="fas fa-redo"></i> Retake Quiz
-        </button>
-      </section>
+    </section>
 
-      <div class="gift">🎁</div>
-      <h2 class="final">Have the BEST Birthday! 🥳</h2>
-      <p class="footer">made with love for my little sister 💗</p>
-      <div class="bottom">✦ ✧ ✦ ✧ ✦</div>
-    </main>
+    <section class="content-section" id="letter">
+        <div class="section-label">A little letter</div>
 
-    <div id="toast" class="toast"></div>
+        <h2 class="section-title">For Sana 💌</h2>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <div class="glass">
+            <div class="letter-icon">💚</div>
+
+            <div class="letter">
+                <p class="salutation">Dear Sana,</p>
+
+                <p>Happy Birthday! Another year older, and somehow even more worth celebrating.</p>
+
+                <p>
+                    I hope this year hands you the kind of laughs that make your cheeks
+                    ache, plans that actually work out, and quiet moments that feel like
+                    exactly enough.
+                </p>
+
+                <p>
+                    Dream a little bigger, stress a little less, and never forget how
+                    much you deserve every good thing that's heading your way.
+                </p>
+
+                <p>
+                    And on the nights that feel heavy, remember this: the sky is never
+                    empty. Even the darkest ones are full of stars.
+                </p>
+            </div>
+
+            <div class="signature">
+                With lots of love,
+                <br />
+                Always 🌙
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="section-label">A birthday tradition</div>
+
+        <h2 class="section-title">Make a Wish 🎂</h2>
+
+        <div class="cake-area">
+            <div class="cake">
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <p class="cake-caption">One candle, one breath, one wish. Make it a good one.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="section-label">For your new chapter</div>
+
+        <h2 class="section-title">Wishes for Sana ✨</h2>
+
+        <div class="wishes">
+            <div class="wish">
+                <div class="wish-icon">🌱</div>
+                <h3>Keep Growing</h3>
+                <p>May every year find you a little wiser, a little braver, and closer to who you want to be.</p>
+            </div>
+
+            <div class="wish">
+                <div class="wish-icon">🌙</div>
+                <h3>Find Your Peace</h3>
+                <p>May your evenings be calm, your heart be light, and your mind finally get some rest.</p>
+            </div>
+
+            <div class="wish">
+                <div class="wish-icon">⭐</div>
+                <h3>Chase Your Dreams</h3>
+                <p>May you always find the courage to go after the things that make your heart race.</p>
+            </div>
+
+            <div class="wish">
+                <div class="wish-icon">💚</div>
+                <h3>Stay Yourself</h3>
+                <p>Keep every little quirk that makes Sana uniquely Sana. The world needs them.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="section-label">Little moments</div>
+        <h2 class="section-title">A Little Timeline 🌿</h2>
+
+        <div class="memory-timeline">
+            <div class="memory-card">
+                <div class="memory-dot">01</div>
+                <div class="memory-content">
+                    <span class="memory-number">A LITTLE CHAOS</span>
+                    <h3>The Silly Moments</h3>
+                    <p>Random chats, terrible jokes, and tiny moments that somehow turned out to be the ones worth keeping.</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-dot">02</div>
+                <div class="memory-content">
+                    <span class="memory-number">THE GOOD ONES</span>
+                    <h3>The Laughter</h3>
+                    <p>Not every memory needs a photo. Some live on as a feeling, a laugh, or a story we still bring up.</p>
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-dot">03</div>
+                <div class="memory-content">
+                    <span class="memory-number">STILL UNWRITTEN</span>
+                    <h3>More To Come...</h3>
+                    <p>There are plenty of pages left, and I'm hoping they're full of memories we'll love looking back on.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="section-label">One last thing</div>
+
+        <h2 class="section-title">Make A Wish 🌠</h2>
+
+        <div class="wish-area">
+            <p>
+                Sana, take a second and look up at the moon.
+
+                <br /><br />
+
+                Think of the one thing you've always hoped for.
+
+                <br />
+
+                Hold it close, and tap the button when you're ready...
+            </p>
+
+            <button class="wish-button" onclick="makeWish()">
+                Make My Wish ✨
+            </button>
+
+            <div id="wishMessage">
+                🌙
+
+                <br /><br />
+
+                Maybe the stars were listening.
+
+                <br /><br />
+
+                Maybe your wish is already on its way to you.
+
+                <br /><br />
+
+                Keep believing, Sana. 💚
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Made under the moonlight 🌙
+
+        <span>Happy Birthday, Sana 💚</span>
+    </footer>
+
     <script>
-      (function ($) {
-        const $questions = $(".question");
-        const TOTAL = $questions.length;
-        let score = 0,
-          answered = 0;
-        const $score = $("#score");
-        const $progress = $("#progressBar");
-        const $retry = $("#retryBtn");
+        function makeWish() {
+            const message = document.getElementById("wishMessage");
 
-        function updateUI() {
-          $score.text(`${score} / ${TOTAL}`);
-          const pct = TOTAL ? (answered / TOTAL) * 100 : 0;
-          $progress.css("width", pct + "%");
+            message.style.display = "block";
+            message.scrollIntoView({ behavior: "smooth", block: "center" });
+
+            createConfetti();
         }
 
-        function showResult($q, msg) {
-          $q.find(".result").text(msg).hide().fadeIn(220);
+        function createConfetti() {
+            const symbols = ["✦", "✧", "✶", "⭐", "🌿", "🍃"];
+            const count = window.innerWidth < 600 ? 36 : 60;
+
+            for (let i = 0; i < count; i++) {
+                const item = document.createElement("div");
+
+                item.className = "confetti";
+                item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                item.style.left = Math.random() * 100 + "vw";
+                item.style.fontSize = 12 + Math.random() * 15 + "px";
+                item.style.animationDuration = 2.5 + Math.random() * 2 + "s";
+                item.style.animationDelay = Math.random() * 0.7 + "s";
+
+                document.body.appendChild(item);
+
+                setTimeout(() => {
+                    item.remove();
+                }, 5000);
+            }
         }
-
-        function toast(msg) {
-          const $t = $("#toast");
-          $t.stop(true, true).text(msg).fadeIn(200).delay(1600).fadeOut(300);
-        }
-
-        function launchHearts(n) {
-          for (let i = 0; i < n; i++) {
-            const $h = $('<span class="pop-heart">💗</span>').css({
-              left: 25 + Math.random() * 50 + "%",
-              top: 50 + Math.random() * 20 + "%",
-              fontSize: 20 + Math.random() * 18 + "px",
-            });
-            $("body").append($h);
-            $h.animate(
-              { top: 5 + Math.random() * 40 + "%", opacity: 0 },
-              1400,
-              function () {
-                $(this).remove();
-              },
-            );
-          }
-        }
-
-        function finalMessage(sc, total) {
-          const ratio = total ? sc / total : 0;
-          if (ratio === 1) return "👑 PERFECT! Certified Birthday Queen!";
-          if (ratio >= 0.6) return "🥳 Quiz finished! Still a legend!";
-          return "😂 More cake needed to think straight!";
-        }
-
-        $("#wishBtn").on("click", function () {
-          const $secret = $("#secret");
-          const isOpen = $secret.is(":visible");
-          $secret.slideToggle(400);
-          $(this).html(
-            isOpen
-              ? '<i class="fas fa-gift"></i> Open Secret Message'
-              : '<i class="fas fa-heart"></i> Hide Secret',
-          );
-          if (!isOpen) {
-            launchHearts(10);
-            toast("💌 Secret message unlocked!");
-          }
-        });
-
-        $(".answer").on("click", function () {
-          const $btn = $(this);
-          const $q = $btn.closest(".question");
-          if ($q.hasClass("answered")) return;
-
-          const correct = $btn.data("correct") === true;
-          $q.addClass("answered");
-          $q.find(".answer").prop("disabled", true);
-          answered++;
-
-          if (correct) {
-            score++;
-            $btn.addClass("correct");
-            showResult($q, "✅ Correct! Birthday brain activated!");
-            toast("🎉 Correct! +1 sister knowledge!");
-            launchHearts(6);
-          } else {
-            $btn.addClass("wrong");
-            $q.find('[data-correct="true"]').addClass("correct");
-            showResult($q, "😂 Nope! The birthday queen knows better!");
-            toast("😂 Wrong! Birthday police 👮‍♀️");
-          }
-          updateUI();
-
-          if (answered === TOTAL) {
-            $retry.fadeIn(300);
-            setTimeout(() => toast(finalMessage(score, TOTAL)), 500);
-          }
-        });
-
-        $retry.on("click", function () {
-          score = 0;
-          answered = 0;
-          $questions
-            .removeClass("answered")
-            .find(".answer")
-            .prop("disabled", false)
-            .removeClass("correct wrong");
-          $questions.find(".result").text("");
-          $retry.fadeOut(200);
-          updateUI();
-          toast("🔄 Quiz reset! Good luck!");
-        });
-
-        $(".pig")
-          .on("mouseenter", function () {
-            $(this).find(".crown").css("transform", "rotate(18deg) scale(1.1)");
-          })
-          .on("mouseleave", function () {
-            $(this).find(".crown").css("transform", "rotate(10deg) scale(1)");
-          });
-
-        $(".card").hide().fadeIn(900);
-        updateUI();
-
-        $questions.each(function (i) {
-          const c = $(this).find('[data-correct="true"]').length;
-          if (c !== 1)
-            console.warn(`Quiz Q${i + 1}: ${c} correct answers (expected 1)`);
-        });
-      })(jQuery);
     </script>
-  </body>
+</body>
+
 </html>
